@@ -23,5 +23,14 @@
       "url": "http://www.opensource.org/licenses/GPL-2.0"
     }
   ],
-  "keywords": [ "jquery", "markup", "editor", "markdown", "wiki", "bbcode", "html", "textile" ]
+  "keywords": [
+    "jquery",
+    "markup",
+    "editor",
+    "markdown",
+    "wiki",
+    "bbcode",
+    "html",
+    "textile"
+  ]
 }

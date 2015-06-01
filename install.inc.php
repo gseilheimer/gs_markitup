@@ -8,7 +8,7 @@
  * @package redaxo 4.4.x/4.5.x/4.6.x
  */
 
-$myself = 'rex_markitup';
+$myself = 'gs_markitup';
 
 
 // INSTALL CONDITIONS
