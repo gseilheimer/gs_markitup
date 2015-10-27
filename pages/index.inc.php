@@ -145,7 +145,11 @@ echo '
 ';
 
 
+<<<<<<< HEAD
 $help = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/'.$mypage.'/README.textile');
+=======
+$help = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/gs_markitup/README.textile');
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
 $help = OOAddon::isActivated('textile') ? rex_a79_textile($help) : '<pre>' . $help . '</pre>';
 
 

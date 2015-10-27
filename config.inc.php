@@ -58,9 +58,15 @@ if (!$REX['REDAXO'] || !is_a($REX["USER"], 'rex_login_sql')) {
 
 // REX COMMONS
 ////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 $REX['ADDON']['version'][$mypage] = '2.0.1';
 $REX['ADDON']['author'][$mypage] = 'jdlx & gs';
 $REX['ADDON']['supportpage'][$mypage] = 'rexdev.de & contic.de';
+=======
+$REX['ADDON']['version'][$mypage] = '1.0.7';
+$REX['ADDON']['author'][$mypage] = 'jdlx';
+$REX['ADDON']['supportpage'][$mypage] = 'rexdev.de';
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
 
 $REX['ADDON']['page'][$mypage] = $mypage;
 $REX['ADDON']['name'][$mypage] = 'RexMarkitup';
@@ -82,9 +88,13 @@ gs:
 compact:
 "blockmenu,|,bold,italic,stroke,ins,cite,code,|,listbullet,listnumeric,|,immimagemenu,linkmedia,|,linkmenu,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
 full:
+<<<<<<< HEAD
 "blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
 dev:
 "blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,immimagemenu,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,|,css_dummy,fullscreen,slice_update,slice_save"',
+=======
+"blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save"',
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
     'options' => 'smartinsert: true,
 previewfrontend: false',
 );
@@ -132,8 +142,13 @@ rex_register_extension('OUTPUT_FILTER',
         ////////////////////////////////////////////////////////////////////////////
         $head = '
 <!-- rex_markitup head assets -->
+<<<<<<< HEAD
   <link rel="stylesheet" href="../files/addons/gs_markitup/markitup/skins/rex_markitup/style.css">
   <link rel="stylesheet" href="../files/addons/gs_markitup/markitup/sets/rex_markitup/style.css">
+=======
+  <link rel="stylesheet" href="../files/addons/gs_markitup/custom/markitup/skins/rex_markitup/style.css">
+  <link rel="stylesheet" href="../files/addons/gs_markitup/custom/markitup/sets/rex_markitup/style.css">
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
   <style>
     ' . $buttoncss . '
   </style>
@@ -146,8 +161,13 @@ rex_register_extension('OUTPUT_FILTER',
         ////////////////////////////////////////////////////////////////////////////
         $body = '
 <!-- rex_markitup body assets -->
+<<<<<<< HEAD
   <script src="../files/addons/gs_markitup/markitup/jquery.markitup.js"></script>
   <script>
+=======
+  <script src="../files/addons/gs_markitup/vendor/markitup/jquery.markitup.js"></script>
+  <script type="text/javascript">
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
     if(typeof rex_markitup === "undefined") { var rex_markitup = {}; }
     rex_markitup.buttondefinitions = {' . PHP_EOL . $buttondefinitions . PHP_EOL . '} // buttondefinitions
     rex_markitup.buttonsets        = {' . PHP_EOL . $buttonsets . PHP_EOL . '} // buttonsets
@@ -156,7 +176,11 @@ rex_register_extension('OUTPUT_FILTER',
     rex_markitup.chosen_imm_type   = "" // last chosen imm type
   </script>
   <script src="../files/addons/gs_markitup/rex_markitup.js"></script>
+<<<<<<< HEAD
   <script>
+=======
+  <script type="text/javascript">
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
   </script>
 <!-- end rex_markitup body assets -->
     ';

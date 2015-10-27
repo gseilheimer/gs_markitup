@@ -39,14 +39,22 @@ if ($data !== false || $api === 'rex_markitup_api') {
         case'rex_a79_help':
             rex_register_extension('ADDONS_INCLUDED',
                 function ($params) use ($data, $REX) {
+<<<<<<< HEAD
                     $tmpl = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/markitup/skins/rex_markitup/preview.tmpl.html');
+=======
+                    $tmpl = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/custom/markitup/skins/rex_markitup/preview.tmpl.html');
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
 
                     switch ($data['func']) {
                         case'css_dummy':
                             $content = rex_markitup_previewlinks(
                                 rex_a79_textile(
                                     rex_get_file_contents(
+<<<<<<< HEAD
                                         $REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/markitup/skins/rex_markitup/css_dummy.textile'
+=======
+                                        $REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/custom/markitup/skins/rex_markitup/css_dummy.textile'
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
                                     )
                                 )
                             );
@@ -60,7 +68,11 @@ if ($data !== false || $api === 'rex_markitup_api') {
                             $content = '<h3>Redaxo Textile Help</h3>' . $content;
                             $content .= rex_a79_textile(
                                 rex_get_file_contents(
+<<<<<<< HEAD
                                     $REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/markitup/skins/rex_markitup/textile_class_usage.textile'
+=======
+                                    $REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/custom/markitup/skins/rex_markitup/textile_class_usage.textile'
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
                                 )
                             );
                             break;
@@ -84,7 +96,11 @@ if ($data !== false || $api === 'rex_markitup_api') {
                             $_SESSION[$REX['INSTNAME']]['rex_markitup'][$data['slice_id']][$data['textarea_name']] = $textile;
                         }
                         $textile = str_replace('<br />', '', $textile);
+<<<<<<< HEAD
                         $html = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/markitup/skins/rex_markitup/preview.tmpl.html');
+=======
+                        $html = rex_get_file_contents($REX['INCLUDE_PATH'] . '/addons/gs_markitup/files/custom/markitup/skins/rex_markitup/preview.tmpl.html');
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
                         $html = str_replace('###CONTENT###', rex_markitup_previewlinks(rex_a79_textile($textile)), $html);
                         rex_markitup_ajax_reply($html, 'text/html');
                     },

@@ -310,6 +310,7 @@ var rex_markitup_getURLParam = function (strParamName) {
                 // MENUS
                 ////////////////////////////////////////////////
                 'blockmenu': {
+<<<<<<< HEAD
                     dropMenuButtons: ['p', 'alignright', 'aligncenter', 'alignjustify'],
                     dropMenu: []
                 },
@@ -325,6 +326,11 @@ var rex_markitup_getURLParam = function (strParamName) {
                     dropMenuButtons: ['p', 'alignright', 'aligncenter', 'alignjustify'],
                     dropMenu: []
                 },
+=======
+                    dropMenuButtons: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', '|', 'p', 'alignright', 'aligncenter', 'alignjustify', '|', 'blockquote', 'bc'],
+                    dropMenu: []
+                },
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
                 'linkmenu': {
                     dropMenuButtons: ['linkintern', 'linkextern', 'linkmailto'],
                     dropMenu: []
@@ -339,7 +345,10 @@ var rex_markitup_getURLParam = function (strParamName) {
             buttonsets: {
                 standard: 'h1,h2,h3,h4,|,bold,italic,stroke,ins,cite,code,|,listbullet,listnumeric,|,immimagemenu,linkmedia,|,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save',
                 compact: 'blockmenu,|,bold,italic,stroke,ins,cite,code,|,listbullet,listnumeric,|,immimagemenu,linkmedia,|,linkmenu,|,preview,rex_a79_help,fullscreen,slice_update,slice_save',
+<<<<<<< HEAD
                 gs: 'h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,linkmedia,image,immimagemenu,linkmenu,|,preview,rex_a79_help,fullscreen,slice_update,slice_save',
+=======
+>>>>>>> 7b786f805ae044f8bd40b113d1bff194a8f5f3ef
                 full: 'blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save',
                 dev: 'blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,immimagemenu,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,|,css_dummy,fullscreen,slice_update,slice_save'
             },
