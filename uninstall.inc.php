@@ -12,6 +12,8 @@ $error = '';
 
 if ($error != '') {
   $REX['ADDON']['installmsg']['rex_markitup'] = $error;
+
 } else {
   $REX['ADDON']['install']['rex_markitup'] = 0;
+
 }

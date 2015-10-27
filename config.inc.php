@@ -8,8 +8,8 @@
  * @package redaxo 4.4.x/4.5.x/4.6.x
  */
 
-if($REX['SETUP'] === true) {
-  return;
+if ($REX['SETUP'] === true) {
+    return;
 }
 
 #rex_register_extension('REX_MARKITUP_BUTTONS',
@@ -33,134 +33,135 @@ if($REX['SETUP'] === true) {
 
 // PLUGIN IDENTIFIER & ROOT
 ////////////////////////////////////////////////////////////////////////////////
-$mypage = 'rex_markitup';
-$myroot = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/';
+$mypage = 'gs_markitup';
+$myroot = $REX['INCLUDE_PATH'] . '/addons/' . $mypage . '/';
 
 
 // APPEND LANG
 ////////////////////////////////////////////////////////////////////////////////
-if(is_a($I18N,'i18n')) {
-  $I18N->appendFile($myroot.'lang/');
+if (is_a($I18N, 'i18n')) {
+    $I18N->appendFile($myroot . 'lang/');
 }
 
 
 // AJAX API
 ////////////////////////////////////////////////////////////////////////////////
-require_once $myroot.'pages/ajax_api.inc.php';
+require_once $myroot . 'pages/ajax_api.inc.php';
 
 
 // ONLY @ LOGGED IN BACKEND SESSION
 //////////////////////////////////////////////////////////////////////////////
-if( !$REX['REDAXO'] || !is_a($REX["USER"],'rex_login_sql') ) {
-  return;
+if (!$REX['REDAXO'] || !is_a($REX["USER"], 'rex_login_sql')) {
+    return;
 }
 
 
 // REX COMMONS
 ////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON']['version'][$mypage]     = '1.0.7';
-$REX['ADDON']['author'][$mypage]      = 'jdlx';
-$REX['ADDON']['supportpage'][$mypage] = 'rexdev.de';
+$REX['ADDON']['version'][$mypage] = '2.0.1';
+$REX['ADDON']['author'][$mypage] = 'jdlx & gs';
+$REX['ADDON']['supportpage'][$mypage] = 'rexdev.de & contic.de';
 
-$REX['ADDON']['page'][$mypage]        = $mypage;
-$REX['ADDON']['name'][$mypage]        = 'RexMarkitup';
-$REX['ADDON']['title'][$mypage]       = 'RexMarkitup';
-$REX['ADDON']['perm'][$mypage]        = 'rexmarkitup[]';
-$REX['PERM'][]                        = 'rexmarkitup[]';
-
+$REX['ADDON']['page'][$mypage] = $mypage;
+$REX['ADDON']['name'][$mypage] = 'RexMarkitup';
+$REX['ADDON']['title'][$mypage] = 'RexMarkitup';
+$REX['ADDON']['perm'][$mypage] = 'rexmarkitup[]';
+$REX['PERM'][] = 'rexmarkitup[]';
 
 
 // DEFAULT SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$mypage]['settings'] = array (
-  'imm_sql_where' => '',
-  'buttoncss' => '',
-  'buttondefinitions' => '',
-  'buttonsets' => 'standard:
+$REX['ADDON'][$mypage]['settings'] = array(
+    'imm_sql_where' => '',
+    'buttoncss' => '',
+    'buttondefinitions' => '',
+    'buttonsets' => 'standard:
 "h1,h2,h3,h4,|,bold,italic,stroke,ins,cite,code,|,listbullet,listnumeric,|,immimagemenu,linkmedia,|,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
+gs:
+"h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,linkmedia,image,immimagemenu,linkmenu,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
 compact:
 "blockmenu,|,bold,italic,stroke,ins,cite,code,|,listbullet,listnumeric,|,immimagemenu,linkmedia,|,linkmenu,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
 full:
-"blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save"',
-  'options' => 'smartinsert: true,
+"blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,fullscreen,slice_update,slice_save",
+dev:
+"blockmenu,|,h1,h2,h3,h4,h5,h6,|,bold,italic,stroke,ins,cite,code,|,alignleft,alignright,aligncenter,alignjustify,|,listbullet,listnumeric,|,immimagemenu,image,linkmedia,|,linkmenu,linkintern,linkextern,linkmailto,|,preview,rex_a79_help,|,css_dummy,fullscreen,slice_update,slice_save"',
+    'options' => 'smartinsert: true,
 previewfrontend: false',
 );
 
 // USER SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-$user_prefs = $REX['INCLUDE_PATH'].'/data/addons/'.$mypage.'/'.$mypage.'.settings.php';
-if(file_exists($user_prefs)) {
-  require_once $user_prefs;
+$user_prefs = $REX['INCLUDE_PATH'] . '/data/addons/' . $mypage . '/' . $mypage . '.settings.php';
+if (file_exists($user_prefs)) {
+    require_once $user_prefs;
 }
 
 
 // INCLUDE ASSETS @ OPF
 ////////////////////////////////////////////////////////////////////////////////
 rex_register_extension('OUTPUT_FILTER',
-  function($params) use($REX)
-  {
-    if(preg_match('/<textarea[^>]*class="[^"]*rex-markitup/',$params['subject']) == 0) {
-      return;
-    }
+    function ($params) use ($REX) {
+        if (preg_match('/<textarea[^>]*class="[^"]*rex-markitup/', $params['subject']) == 0) {
+            return;
+        }
 
-    if(!isset($REX['ADDON']['image_manager']['types'])) {
-      rex_markitup_imm_imgtypes();
-    }
+        if (!isset($REX['ADDON']['image_manager']['types'])) {
+            rex_markitup_imm_imgtypes();
+        }
 
-    // EP
-    ////////////////////////////////////////////////////////////////////////////
-    $ep = rex_register_extension_point(
-      'REX_MARKITUP_BUTTONS',
-      array(
-        'buttondefinitions' => stripslashes($REX['ADDON']['rex_markitup']['settings']["buttondefinitions"]),
-        'buttonsets'        => stripslashes($REX['ADDON']['rex_markitup']['settings']["buttonsets"]),
-        'buttoncss'         => stripslashes($REX['ADDON']['rex_markitup']['settings']["buttoncss"]),
-        'options'           => stripslashes($REX['ADDON']['rex_markitup']['settings']["options"]),
-        'immtypes'          =>              $REX['ADDON']['image_manager']['types'],
-      )
-    );
-    $buttondefinitions = $ep['buttondefinitions'];
-    $buttonsets        = $ep['buttonsets'];
-    $buttoncss         = $ep['buttoncss'];
-    $immtypes          = $ep['immtypes'];
-    $options           = $ep['options'];
-
+        // EP
+        ////////////////////////////////////////////////////////////////////////////
+        $ep = rex_register_extension_point(
+            'REX_MARKITUP_BUTTONS',
+            array(
+                'buttondefinitions' => stripslashes($REX['ADDON']['gs_markitup']['settings']["buttondefinitions"]),
+                'buttonsets' => stripslashes($REX['ADDON']['gs_markitup']['settings']["buttonsets"]),
+                'buttoncss' => stripslashes($REX['ADDON']['gs_markitup']['settings']["buttoncss"]),
+                'options' => stripslashes($REX['ADDON']['gs_markitup']['settings']["options"]),
+                'immtypes' => $REX['ADDON']['image_manager']['types'],
+            )
+        );
+        $buttondefinitions = $ep['buttondefinitions'];
+        $buttonsets = $ep['buttonsets'];
+        $buttoncss = $ep['buttoncss'];
+        $immtypes = $ep['immtypes'];
+        $options = $ep['options'];
 
 
-    // CSS @ HEAD
-    ////////////////////////////////////////////////////////////////////////////
-    $head = '
+        // CSS @ HEAD
+        ////////////////////////////////////////////////////////////////////////////
+        $head = '
 <!-- rex_markitup head assets -->
-  <link rel="stylesheet" href="../files/addons/rex_markitup/custom/markitup/skins/rex_markitup/style.css">
-  <link rel="stylesheet" href="../files/addons/rex_markitup/custom/markitup/sets/rex_markitup/style.css">
+  <link rel="stylesheet" href="../files/addons/gs_markitup/markitup/skins/rex_markitup/style.css">
+  <link rel="stylesheet" href="../files/addons/gs_markitup/markitup/sets/rex_markitup/style.css">
   <style>
-    '.$buttoncss.'
+    ' . $buttoncss . '
   </style>
 <!-- end rex_markitup head assets -->
     ';
-    $params['subject'] = str_replace('</head>',$head.'</head>',$params['subject']);
+        $params['subject'] = str_replace('</head>', $head . '</head>', $params['subject']);
 
 
-    // JS @ BODY
-    ////////////////////////////////////////////////////////////////////////////
-    $body = '
+        // JS @ BODY
+        ////////////////////////////////////////////////////////////////////////////
+        $body = '
 <!-- rex_markitup body assets -->
-  <script src="../files/addons/rex_markitup/vendor/markitup/jquery.markitup.js"></script>
-  <script type="text/javascript">
+  <script src="../files/addons/gs_markitup/markitup/jquery.markitup.js"></script>
+  <script>
     if(typeof rex_markitup === "undefined") { var rex_markitup = {}; }
-    rex_markitup.buttondefinitions = {'.PHP_EOL.$buttondefinitions.PHP_EOL.'} // buttondefinitions
-    rex_markitup.buttonsets        = {'.PHP_EOL.$buttonsets.PHP_EOL.'} // buttonsets
-    rex_markitup.options           = {'.PHP_EOL.$options.PHP_EOL.'} // buttonsets
-    rex_markitup.immtypes          = '.json_encode($immtypes).' // immtypes
+    rex_markitup.buttondefinitions = {' . PHP_EOL . $buttondefinitions . PHP_EOL . '} // buttondefinitions
+    rex_markitup.buttonsets        = {' . PHP_EOL . $buttonsets . PHP_EOL . '} // buttonsets
+    rex_markitup.options           = {' . PHP_EOL . $options . PHP_EOL . '} // buttonsets
+    rex_markitup.immtypes          = ' . json_encode($immtypes) . ' // immtypes
     rex_markitup.chosen_imm_type   = "" // last chosen imm type
   </script>
-  <script src="../files/addons/rex_markitup/rex_markitup.js"></script>
-  <script type="text/javascript">
+  <script src="../files/addons/gs_markitup/rex_markitup.js"></script>
+  <script>
   </script>
 <!-- end rex_markitup body assets -->
     ';
-    $params['subject'] = str_replace('</body>',$body.'</body>',$params['subject']);
+        $params['subject'] = str_replace('</body>', $body . '</body>', $params['subject']);
 
-    return $params['subject'];
-  }
+        return $params['subject'];
+    }
 );
